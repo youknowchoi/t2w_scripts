@@ -9,9 +9,7 @@ function getNews() {
         response = JSON.parse(req.responseText);
         if (response) {
             var news = response.responseData.feed.entries;
-            var text;
-            for (n in news) text += news[n].title + "\n";
-            Talk2Watch.sendSms(text);
+            Talk2Watch.sendSms(news[0].title);
         }
     };
     req.send(null);
